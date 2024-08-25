@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@heroicons/react": "~2.0.11",
+    "@privy-io/react-auth": "latest",
     "@rainbow-me/rainbowkit": "2.1.2",
     "@tanstack/react-query": "~5.28.6",
     "@uniswap/sdk-core": "~4.0.1",

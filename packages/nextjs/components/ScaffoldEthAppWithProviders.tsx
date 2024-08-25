@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import PrivyScaffoldProvider from "./PrivyScaffoldProvider";
 import { RainbowKitProvider, darkTheme, lightTheme } from "@rainbow-me/rainbowkit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
@@ -49,12 +50,14 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <ProgressBar />
-        <RainbowKitProvider
-          avatar={BlockieAvatar}
-          theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
-        >
-          <ScaffoldEthApp>{children}</ScaffoldEthApp>
-        </RainbowKitProvider>
+        <PrivyScaffoldProvider>
+          <RainbowKitProvider
+            avatar={BlockieAvatar}
+            theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
+          >
+            <ScaffoldEthApp>{children}</ScaffoldEthApp>
+          </RainbowKitProvider>
+        </PrivyScaffoldProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
